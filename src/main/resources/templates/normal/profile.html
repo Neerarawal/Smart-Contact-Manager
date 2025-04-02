@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace ="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>This is Home Page </title>
+</head>
+<body>
+	<section>
+	
+	
+	
+	<div class="container">
+	
+			<div class="card">
+			
+			     <div class="card-body">
+			     
+			      <div class="container text-center">
+			      
+			         <img style= "height: 200px; width:200px;" class="my_profile_picture" 
+							      th:src="@{/img/{image}(image=${user.imageUrl != null and user.imageUrl != '' ? user.imageUrl : 'default.png'})}" 
+							          alt="Profile photo." />
+	       
+			      
+			      </div>
+			     
+			                <h1 class="text-center mt-3" th:text="${user.name}"></h1>
+
+			     
+			           <!--  Table info -->
+             <div class="table-responsive">                  
+                   <table class="table  text-center table-hover">
+                             
+                             
+							<thead class="thead-light">
+								  
+									    <tr>
+									    
+									      <th scope="col">#USERID</th>
+									      <th scope="col">SCMUSER<span th:text="${user.Id}"></span></th>
+									      
+									    </tr>
+									    
+							 </thead>
+						<tbody>
+								    <tr>
+								      <th scope="row">Email</th>
+								      <td><span th:text="${user.email}"></span></td>
+								    </tr>
+								    
+								    
+								    <tr>
+								      <th scope="row">Role</th>
+								      <td><span th:text="${user.role}"></span></td>
+								    </tr>
+								    
+								    <tr>
+								      <th scope="row">Account Active</th>
+								      <td><span th:text="${user.enabled}"></span></td>
+								    </tr>
+								    
+								    <tr>
+								      <th scope="row">About You</th>
+								      <td><span th:text="${user.about}"></span></td>
+								    </tr>
+								    
+								    
+						 </tbody>
+						 
+				</table>
+		</div>		
+				
+				<!-- Update and Delete Buttons -->
+<!-- 						<div class="container mt-3 text-center"> -->
+						
+<!-- 						    Delete Button -->
+<!-- 						    <a th:href="@{/user/delete-profile/{id}(id=${user.id})}"  -->
+<!-- 						       class="btn btn-danger btn-sm btn-block" -->
+<!-- 						       onclick="return confirm('Are you sure you want to delete your profile?');"> -->
+<!-- 						       Delete -->
+<!-- 						    </a> -->
+						
+<!-- 						    Update Button -->
+<!-- 						    <form method="post" th:action="@{/user/update-profile}" class="mt-2"> -->
+<!-- 						        <button type="submit" class="btn btn-primary btn-sm btn-block">Update</button> -->
+<!-- 						    </form> -->
+						
+<!-- 						</div> -->
+
+	       
+			     
+			     </div>
+			
+			</div>
+	
+	                                   
+	
+	</div>
+	  <script>
+	
+	$(document).ready(()=> {
+	
+	   $('.item').removeClass('active');
+	   $('#profile-link').addClass('active');
+	   });
+	
+	</script>
+	
+	
+
+	
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+ 

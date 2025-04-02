@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace ="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>This is Home Page </title>
+</head>
+<body>
+	<section>
+	<div class="card mr-3 ml-3"  th:if="${contact}">
+	
+	   <div class="card-body">
+	   
+	       <div class="container text-center">
+	       
+	           <img style= "height: 200px; width:200px;" class="my_profile_picture" 
+							      th:src="@{/img/{image}(image=${contact.image != null and contact.image != '' ? contact.image : 'contact1.png'})}" 
+							          alt="Profile photo." />
+	       
+	       
+	       <h3 class="mt-3"> <span  th:text="${contact.name}"></span> (<span  th:text="${contact.secondName}"></span>) </h3>
+	       
+                                       <!--  Table info -->
+               <div class="table-responsive"> 
+                                        
+                   <table class="table table-hover">
+                             
+                             
+							<thead class="thead-light">
+								  
+									    <tr>
+									    
+									      <th scope="col">#ID</th>
+									      <th scope="col">SCMUSER<span th:text="${contact.cId}"></span></th>
+									      
+									    </tr>
+									    
+							 </thead>
+						<tbody>
+								    <tr>
+								      <th scope="row">Email</th>
+								      <td><span th:text="${contact.email}"></span></td>
+								    </tr>
+								    
+								    
+								    <tr>
+								      <th scope="row">Phone</th>
+								      <td><span th:text="${contact.phone}"></span></td>
+								    </tr>
+								    
+								    <tr>
+								      <th scope="row">Work</th>
+								      <td><span th:text="${contact.work}"></span></td>
+								    </tr>
+								    
+								    
+						 </tbody>
+						 
+				</table>
+		</div>					       
+                                      <!--description -->
+                                      
+                        <div class="description mt-3">
+						 
+						    <th:block th:utext="${contact.description}"></th:block>
+						 
+						</div>
+	       
+                              <!--update and delete button -->
+                              
+                              <div class="container mt-3">
+                              
+		                          <button  th:onclick="|deleteContact(${contact.cId})|" class="btn btn-danger btn-sm btn-block">Delete</button>
+		                          
+		                          <form method = "post" th:action="@{'/user/update-contact/'+${contact.cId}}" class="mt-2">
+			                          <button  type="submit" class="btn  btn-block btn-primary btn-sm">Update</button>
+			                      </form>
+			                      
+                              </div>
+	       
+	       
+	       
+	       </div>
+	   
+	   </div>
+	   
+	    
+	</div>
+	
+	     <h1 class="text-center p-3 bg-danger text-white"  th:unless="${contact}">You don't have permission to view this contact...</h1>
+	           
+	
+
+	
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+ 
